@@ -1,0 +1,21 @@
+{
+    "name": "yusufjonc07/yii2-miggen2",
+    "description": "Generate migration files by exsisting tables' schema",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"," gii"," migration generators"],
+    "license": "BSD-4-Clause",
+    "authors": [
+        {
+            "name": "Yusufjon",
+            "email": "yusupeu.dev@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "yusufjonc07\\miggen2\\": ""
+        }
+    }
+}
