@@ -7,42 +7,105 @@ namespace yusufjonc07\miggen2;
  *
  * @package yusufjonc07\miggen2
  */
-class MigrationGen2 extends \yii\base\Module
+class MigrationGen2 extends \yii\gii\Generator
 {
 
-    /**
-     *
+     /**
+     * @var string
      */
-    const VERSION = '0.0.1-dev';
+    public $tables = '';
 
     /**
      * @var string
      */
-    public $controllerNamespace = 'yusufjonc07\miggen2\controllers';
+    public $mysql = TRUE;
+    /**
+     * @var bool
+     */
+    public $mssql = FALSE;
+    /**
+     * @var bool
+     */
+    public $pgsql = FALSE;
+    /**
+     * @var bool
+     */
+    public $sqlite = FALSE;
+
+    /**
+     * @var string
+     */
+    public $mysql_options = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
+    /**
+     * @var string
+     */
+    public $mssql_options = '';
+    /**
+     * @var string
+     */
+    public $pgsql_options = '';
+    /**
+     * @var string
+     */
+    public $sqlite_options = '';
 
 
     /**
-     *
+     * @var array
      */
-    public function init()
-    {
-        parent::init();
-    }
-
+    public $databaseTables = [];
 
     /**
-     * Override createController()
-     *
-     * @link https://github.com/yiisoft/yii2/issues/810
-     * @link http://www.yiiframework.com/forum/index.php/topic/21884-module-and-url-management/
+     * @var bool
      */
-    public function createController($route)
-    {
-        preg_match('/(default)/', $route, $match);
-        if (isset($match[0]))
-            return parent::createController($route);
+    public $addIfThenStatements = TRUE;
 
-        return parent::createController("{$this->defaultRoute}/{$route}");
+    /**
+     * @var string
+     */
+    public $tableOptions = '';
+
+    /**
+     * @var bool
+     */
+    public $addTableInserts = FALSE;
+
+    /**
+     * @var string
+     */
+    public $ForeignKeyOnDelete = 'CASCADE';
+
+    /**
+     * @var string
+     */
+    public $ForeignKeyOnUpdate = 'NO ACTION';
+
+    /**
+     * @return array
+     */
+
+    public function getName()
+    {
+        return 'Migration Generator';
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function getDescription()
+    {
+        return 'Generate migration files by exsisting tables` schema';
+    }
+
+    function rules()
+    {
+        return [
+            [['tables', 'databaseTables', 'databaseType'], 'required'],
+            ['tableOptions', 'default', 'value' => '']
+        ];
+    }
+
+
+
 
 }

@@ -8,7 +8,6 @@
 namespace yusufjonc07\miggen2\assets;
 
 use yii\web\AssetBundle;
-use yii\web\View;
 
 /**
  * Class AppAssets
