@@ -37,6 +37,7 @@ class DefaultController extends Controller
         $output = new OutputString(['tabLevel' => $initialTabLevel]);
         $output_drop = new OutputString();
         $tables_value = '';
+        
         if (isset($_POST['MigrationUtility'])) {
             $array = [];
             $array['inserts'] = [];
